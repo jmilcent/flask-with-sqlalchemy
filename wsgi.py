@@ -3,7 +3,6 @@ from config import Config
 import os
 import logging
 
-logging.warning(os.environ["DUMMY"])
 
 
 app = Flask(__name__)
