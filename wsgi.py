@@ -1,4 +1,6 @@
 from flask import Flask, render_template
+from flask_admin import Admin
+from flask_admin.contrib.sqla import ModelView
 from config import Config
 from flask import request
 from flask import abort
@@ -15,6 +17,8 @@ ma = Marshmallow(app)
 from models import Product
 from schemas import products_schema,product_schema
 
+admin = Admin(app, name='Back-office', template_mode='bootstrap3')
+admin.add_view(ModelView(Product, db.session)) # `Product` needs to be imported before
 
 @app.route('/hello')
 def hello():
