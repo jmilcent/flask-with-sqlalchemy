@@ -12,6 +12,7 @@ flask-migrate = "*"
 flask-script = "*"
 flask-marshmallow = "*"
 marshmallow-sqlalchemy = "*"
+flask-admin = "*"
 
 [dev-packages]
 
