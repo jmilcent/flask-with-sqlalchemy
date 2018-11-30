@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from config import Config
 from flask import request
 from flask import abort
@@ -24,7 +24,8 @@ def hello():
 @app.route('/products')
 def products():
     products = db.session.query(Product).all() # SQLAlchemy request => 'SELECT * FROM products'
-    return products_schema.jsonify(products)
+    #return products_schema.jsonify(products)
+    return render_template('home.html', products=products)
 
 
 @app.route('/products', methods=['POST'])
@@ -45,7 +46,8 @@ def add_product():
 def get_products(id):
     product = db.session.query(Product).get(id)
     db.session.commit()
-    return product_schema.jsonify(product)
+    #return product_schema.jsonify(product)
+    return render_template('find.html', products=product)
 
 
 @app.route('/products/<int:id>', methods=['DELETE'])

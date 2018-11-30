@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="http://127.0.0.1:5000/products">Products <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="http://127.0.0.1:5000/products/find">Find product</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+  <h1>Products</h1>
+
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for product in products %}
+      <tr>
+          <th scope="row"><a href="http://127.0.0.1:5000/products/{{ product.id }}">{{ product.id }}</th>
+          <td>{{ product.name }}</td>
+          <td>{{ product.description }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+
+
+
